@@ -5,7 +5,7 @@ References
 
 # 公式のドキュメント
 
-[オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル (Ruby 2.7.0 リファレンスマニュアル)](https://docs.ruby-lang.org/ja/latest/doc/index.html)
+[オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル](https://docs.ruby-lang.org/ja/latest/doc/index.html)
 
 Rubyのことをなにか調べたいと思ったら、まず最初に見るべきはここです。
 ここには、Rubyの言語としての仕様やAPIリファレンスがだいたいすべて書かれています。
@@ -48,7 +48,8 @@ Rubyになれれば探し方もわかってきますが、それまではまず�
 
 [Ruby API (v2.7)](https://rubyapi.org/)
 
-これよく知らないんで、誰か解説書いてほしいです
+高速な検索とJavaDocみたいな左ペインが特徴のオシャレドキュメントです。
+[Ruby on Rails API](https://api.rubyonrails.org/) のように各メソッドの解説にて実際のRubyの実装にジャンプできるので、実装に興味のある人にはとても便利です。
 
 # Dash for macOS
 [Dash for macOS - API Documentation Browser, Snippet Manager - Kapeli](https://kapeli.com/dash)
