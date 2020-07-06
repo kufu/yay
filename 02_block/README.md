@@ -66,7 +66,7 @@ end
 ファイルを開いて操作する場合にも、ブロックを使用します。
 
 ```ruby
-File.ooen('path/to/file', 'a') do |f|
+File.open('path/to/file', 'a') do |f|
   f.puts("something")
 end
 ```
