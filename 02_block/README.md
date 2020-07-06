@@ -141,6 +141,7 @@ end
 def triple(arg, &blk)
   acc = arg
   3.times { acc = blk.call(acc) }
+  acc
 end
 ```
 
