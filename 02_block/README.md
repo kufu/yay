@@ -90,7 +90,7 @@ lines = File.read('path/to/file').split("\n")
 
 ## ActiveRecordのトランザクション
 
-かなり雑な例ですが、お金を商品を引き換えにするような場合には、RDBMSのトランザクションを使う必要があります
+かなり雑な例ですが、お金と商品を引き換えにするような場合には、RDBMSのトランザクションを使う必要があります
 
 ```ruby
 ActiveRecord::Base.transaction do
