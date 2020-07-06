@@ -35,7 +35,7 @@ for i in arr
 end
 ```
 
-whileはCやJavaScriptのようなスタイル、forはやShellのようなスタイルです。この二つはどちらも同じ様に配列のすべての要素を出力しますが、Rubyでは通常次のように書かれます。
+whileはCやJavaScriptのようなスタイル、forはPythonやShellのようなスタイルです。この二つはどちらも同じ様に配列のすべての要素を出力しますが、Rubyでは通常次のように書かれます。
 
 ```ruby
 arr = [1, 2, 3, 4, 5]
