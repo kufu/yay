@@ -13,4 +13,4 @@
 # > input
 #    { hoge: "foo", "piyo" => :boom, 1 => "one" }
 # < output
-#   { "hoge" => "foo", piyo: :boom, :"1" => "one" }
+#   { "hoge" => "foo", :piyo => :boom, :"1" => "one" }
