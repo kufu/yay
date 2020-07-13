@@ -1,5 +1,5 @@
 private, symbol
-=== 
+===
 # private
 
 > 参考 : かんたんRuby 9-05 P257
@@ -19,7 +19,7 @@ privateメソッドは、『レシーバーを省略した状態でなければ�
 つまり、privateのメソッドは、暗黙のselfをレシーバーにした場合のみ呼び出せるメソッドです。
 
 ```ruby
-class Somethiong
+class Something
   def hoge
     foo
   end
