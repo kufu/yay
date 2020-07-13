@@ -2,6 +2,8 @@ private, symbol
 === 
 # private
 
+> 参考 : かんたんRuby 9-05 P257
+
 Rubyにおいて覚えるべきメソッドのアクセスコントロールは、publicかprivateかです。言語仕様としてprotectedは存在しますが、明らかに期待と異なる動作をするため覚える必要はありません。
 歴史的経緯でいえば、RubyのprotectedはSmalltalkではなくC++やJavaに影響されて作られましたが、それを鑑みても期待とは異なるので、使わないほうが無難です。
 その一方で、privateはとても良く使います。また、ルールも非常に簡単なので、必ず覚えましょう。
@@ -87,6 +89,8 @@ Something.new.hoge # => "hoge"
 詳しくは、マニュアルの[クラス／メソッドの定義#演算子式の定義](https://docs.ruby-lang.org/ja/master/doc/spec=2fdef.html#operator)と、[演算子式](https://docs.ruby-lang.org/ja/master/doc/spec=2foperator.html)の「再定義できる演算子」を参照してください。
 
 # String と Symbol
+
+> 参考 : かんたんRuby 5-06 P157
 
 Rubyを学ぶときにぶち当たる謎の概念として、ブロックと双璧をなすのがシンボルだと思います。
 シンボルは、端的に言うとStaticな文字列です。処理系の中で一つのIDが与えられ、その値は不変です。
