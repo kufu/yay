@@ -83,7 +83,7 @@ Something.new.hoge # => "hoge"
 
 さらっと `def foo=(v)` をアクセサメソッドとして話してしまいましたが、これはRubyのメソッド定義において演算子式の定義と呼ばれるメソッドです。
 [クラス／メソッドの定義](https://docs.ruby-lang.org/ja/master/doc/spec=2fdef.html)
-`obj.foo = "piyo"` のような式は、実行時に `obj.foo=("foo")` のような形で解釈されます。つまり、objのfooに"piyo"を代入する、というふうに読めるこの式は、実はobjの `foo=` メソッドを呼んでいるに過ぎません。
+`obj.foo = "piyo"` のような式は、実行時に `obj.foo=("piyo")` のような形で解釈されます。つまり、objのfooに"piyo"を代入する、というふうに読めるこの式は、実はobjの `foo=` メソッドを呼んでいるに過ぎません。
 `foo=` メソッドは、なにか特別なことをしない限りは、ユーザーが自由に定義できるメソッドです。一つ前の例では、引数を一つ取ってその引数をオブジェクト変数に代入する挙動をしていますが、実際には何を書こうがユーザーの自由です。
 このように、Rubyにおいてはアクセサもすべてメソッドです。また同様に、演算子もすべてメソッドです。特定の演算子に関しては、ユーザーが再定義することも可能です。
 詳しくは、マニュアルの[クラス／メソッドの定義#演算子式の定義](https://docs.ruby-lang.org/ja/master/doc/spec=2fdef.html#operator)と、[演算子式](https://docs.ruby-lang.org/ja/master/doc/spec=2foperator.html)の「再定義できる演算子」を参照してください。
