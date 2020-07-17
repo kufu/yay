@@ -93,7 +93,7 @@ rbenv versionsを使うと現在のRubyのインストール・使用状況を�
 （作業ディレクトリに`.ruby-version`などがあるとそちらを優先するため、思った通りのバージョンにならない場合はそちらも確認しましょう）
 
 ```sh
-rbenv versions
+% rbenv versions
   system
   2.5.7
   2.6.6
