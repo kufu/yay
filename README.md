@@ -45,7 +45,8 @@ rakeコマンドを通じてテストを実行する設計になっています�
 `rbenv`をインストールします
 
 - https://github.com/rbenv/rbenv#installation
-  - .bash_profileなど、お使いの環境に合わせてPATHなどの設定を追加するのを忘れずに
+  - インストール方法に依らず、.bash_profileなどに設定を追加する必要があります（https://github.com/rbenv/rbenv#basic-github-checkout の `3.`の手順です）
+  - `rbenv init`を実行すると、どのファイルに何を記載するか出力してくれるので、そこを参考にして`eval "$(rbenv init -)"`を記載しましょう
 - brew以外の方法でrbenvをインストールした場合はruby-buildのインストールも行う必要があります
   - https://github.com/rbenv/ruby-build#installation
 - ProTip
