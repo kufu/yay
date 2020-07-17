@@ -27,7 +27,18 @@ rakeコマンドを通じてテストを実行する設計になっています�
 
 ```sh
 % bundle exec rake
+bundle exec rake
+Run options: --seed 64799
+
+# Running:
+
+EEEFEFEEEEEEEEEEEE
+
+Finished in 0.004522s, 3980.5396 runs/s, 442.2822 assertions/s.
     :
+    :
+Tasks: TOP => default => test
+(See full trace by running task with --trace)
 ```
 
 特定のディレクトリのみテストを実行したい場合はTEST環境変数を利用します。
