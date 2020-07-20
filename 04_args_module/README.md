@@ -23,7 +23,7 @@ def メソッド名 ['(' [arg0 ['=' default0]] ... [',' '*' rest_args [, post ..
 - 引数
 - デフォルト式の付いた引数
 - 可変長引数
-- 可変長引数の後ろでキャプチャする引数（デフォルト式は付けられない）
+- 可変長引数の後ろで束縛する引数（デフォルト式は付けられない）
 - キーワード引数
 - 未定義のキーワード引数
 - ブロック引数
@@ -229,10 +229,10 @@ configure({ option5: "piyo" }) # warning appear on Ruby2.7
 
 ## ブロック引数
 
-ブロック引数は、必ず引数リストの最後に位置します。また、省略されても渡すことは可能ですが、理由がなければブロックを引数に取るメソッドはブロックを引数にキャプチャしましょう。
+ブロック引数は、必ず引数リストの最後に位置します。また、省略されても渡すことは可能ですが、理由がなければブロックを引数に取るメソッドはブロックを引数に束縛しましょう。
 
 ```ruby
-# 判断可能だけど、キャプチャしようね
+# 判断可能だけど、束縛しようね
 def foo
   puts block_given?
 end
@@ -241,7 +241,7 @@ foo #=> false
 foo { } # =>true
 
 
-# キャプチャした場合も同じ挙動です
+# 束縛した場合も同じ挙動です
 def foo(&blk)
   puts block_given?
 end
@@ -343,7 +343,7 @@ class Foo
   end
 end
 
-Foo.monosugoi # => "sugoi"
+Foo.sugoi # => "sugoi"
 Foo.new.monosugoi # => 例外が発生する、sugoiはFooのインスタンスメソッドではないため
 ```
 
@@ -376,13 +376,14 @@ end
 
 class Safe
   @class_ins_val
+  @class_ins_val = 100
 
   def a
     @class_ins_val # アクセスできない
   end
 
   def self.b
-    @class_ins_val # アクセスできる
+    @class_ins_val # アクセスできる # => 100
   end
 end
 ```
