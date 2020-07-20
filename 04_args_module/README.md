@@ -54,6 +54,7 @@ foo(10, 40)
 ```
 
 デフォルト式の付いている引数は、可変長引数が現れるまでは自由に順序を決めることもできます。
+面白い機能ではありますが、基本的にユーザーコードでバグを引き起こすことが多いので、特別な理由がない限りは避けましょう。
 
 ```ruby
 def foo(a, b = 20, c)
@@ -234,7 +235,16 @@ configure({ option5: "piyo" }) # warning appear on Ruby2.7
 # 判断可能だけど、キャプチャしようね
 def foo
   puts block_given?
-def 
+end
+
+foo #=> false
+foo { } # =>true
+
+
+# キャプチャした場合も同じ挙動です
+def foo(&blk)
+  puts block_given?
+end
 
 foo #=> false
 foo { } # =>true
@@ -251,13 +261,18 @@ Rubyには、クラスの他にモジュールという非常によく似た機�
 モジュールの用途の一つとして、名前空間を区切るというものがあります。Gemを作成するときには、まずトップレベルでGemの名前のモジュールを作成して、他のコードを汚染しないようにします。
 
 ```ruby
+require 'kinoppyd_sugoi_benri/version'
+
 module KinoppydSugoiBenri
-  require 'kinoppyd_sugoi_benri/version'
-  require 'kinoppyd_sugoi_benri/sugoi_string'
+  class Error < StandardError; end
+  # Your code goes here...
 end
+
+require 'kinoppyd_sugoi_benri/sugoi_string'
 ```
 
-そして、`KinoppydSugoiBenri` の名前空間の中で `SugoiString` を提供したい場合は、次のように宣言します。
+モジュールで名前空間を宣言し、Gemに関わるコードを全て名前空間の下に置くことで、他のGemとの名前の衝突を回避します。
+`KinoppydSugoiBenri` の名前空間の中で `SugoiString` を提供したい場合は、次のように宣言します。
 
 ```ruby
 class KinoppydSugoiBenri::SugoiString
@@ -275,17 +290,14 @@ end
 ```
 
 気をつける点としては、モジュールはインスタンス化できないので、上の例での `sugoi_string.rb` と `sugoi_string/ext.rb` などのように、名前空間ではあるがインスタンス化も必要な場合は、モジュールでなくクラスを使う必要があります。
-また、存在しない名前空間を `::` でつないでしまうと、暗黙的にクラスを作成してしまいます。例えば、次のような例です。
+また、存在しない名前空間を `::` でつないでしまうと、例外を発生させます（Railsの環境下では、暗黙的にクラスを作成してしまいます）。例えば、次のような例です。
 
 ```ruby
 # Hogeが宣言されていない状態で
-class Hoge::Foo
-end
-
-puts Hoge.class # => Class
+class Hoge::Foo; end # => NameError (uninitialized constant Hoge)
 ```
 
-これは、requireの順序などで事故を起こします。例えば、モジュールとしてHogeを宣言している箇所があるのに、先に `class Hoge::Foo` を読んでしまうと、Hogeクラスが作成されて、衝突します。
+これは、requireの順序などで事故を起こします。例えば、名前空間Hogeを宣言するよりも先に `class Hoge::Foo` を読んでしまうと、エラーが発生します。
 名前空間のロードは、優先的に行いましょう。
 
 
@@ -340,3 +352,37 @@ Foo.new.monosugoi # => 例外が発生する、sugoiはFooのインスタンス�
 > 参考 : かんたんRuby 9-03 P249
 
 この名前を聞くとつい使いたくなるかもしれませんが、protectedと同じで使ってはいけない、今すぐ名前を忘れろ。以上です。
+
+以上ですと言うと取り付く島もないので、クラス変数に関して簡単に説明すると、定義したクラスとそのクラスのインスタンス全てから制限なくアクセスできる共有の変数です。クラスのシングルトン変数という言い方が最も近いかと思いますが、どこからでも書き換えが可能なので非常に危険です。
+クラス変数は、 `@@` というプレフィックスを利用します。実際にこれが必要になるケースはほとんど無く、大体の場合は次のクラスインスタンス変数で解決できます。
+
+クラス特有のシングルトン変数が欲しいけれど、クラスのインスタンスから直接アクセスできないようにしたい場合は、クラスインスタンス変数を使用しましょう。
+クラスインスタンス変数とは、クラスオブジェクトの変数です。すでに何度も出てきた話ですが、Rubyにおいてクラスもオブジェクトです。そのため、クラスオブジェクトも通常のクラスと同じ様に、インスタンス変数を持つことができます。
+クラス変数とはスコープが違うため、クラスインスタンス変数はそのクラス”の”オブジェクトからは参照することができません。必ず”クラスオブジェクト”から参照する必要があります。
+また、クラスインスタンス変数は、そのクラスを継承したクラスからも参照することはできません。クラスオブジェクトの変数は、継承先に引き継がれないからです。
+
+```ruby
+class Yabai
+  @@class_val
+
+  def a
+    @@class_val # アクセスできる
+  end
+
+  def self.b
+    @@class_val # アクセスできる
+  end
+end
+
+class Safe
+  @class_ins_val
+
+  def a
+    @class_ins_val # アクセスできない
+  end
+
+  def self.b
+    @class_ins_val # アクセスできる
+  end
+end
+```
