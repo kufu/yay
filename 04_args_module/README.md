@@ -339,7 +339,7 @@ class Foo
   extend Benri
 
   def monosugoi
-    benri
+    sugoi
   end
 end
 
