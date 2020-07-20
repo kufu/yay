@@ -331,7 +331,7 @@ class Foo
   end
 end
 
-Foo.monnosugoi # => "sugoi"
+Foo.monosugoi # => "sugoi"
 Foo.new.monnosugoi # => 例外が発生する、sugoiはFooのインスタンスメソッドではないため
 ```
 
