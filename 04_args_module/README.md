@@ -318,7 +318,7 @@ class Foo
   include Benri
 
   def monosugoi
-    benri
+    sugoi
   end
 end
 
