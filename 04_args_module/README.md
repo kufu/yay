@@ -322,7 +322,7 @@ class Foo
   end
 end
 
-Foo.new.monnosugoi # => "sugoi"
+Foo.new.monosugoi # => "sugoi"
 ```
 
 モジュールの中で宣言したメソッドは、クラスにincludeすることにより、そのクラスのインスタンスメソッドとして使用することができます。
