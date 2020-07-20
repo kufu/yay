@@ -332,7 +332,7 @@ class Foo
 end
 
 Foo.monosugoi # => "sugoi"
-Foo.new.monnosugoi # => 例外が発生する、sugoiはFooのインスタンスメソッドではないため
+Foo.new.monosugoi # => 例外が発生する、sugoiはFooのインスタンスメソッドではないため
 ```
 
 ## クラス変数
