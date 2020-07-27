@@ -93,7 +93,7 @@ hoge ||= 1
 hoge # => 1
 ```
 
-Rubyではメソッドの最後に評価された式がメソッドの戻り地になります。そのため、次のようなイディオムが頻出します。
+Rubyではメソッドの最後に評価された式がメソッドの戻り値になります。そのため、次のようなイディオムが頻出します。
 
 ```ruby
 def memonized_hoge
@@ -228,7 +228,6 @@ end
 
 また、例外クラスを明示しないrescueが捕捉できるのは、StandardErrorのサブクラスのみです。すべての例外クラスの始祖はExceptionクラスですが、自分で例外を定義するときはStandardErrorクラスを継承するようにしましょう。
 
-```suggestion
 例外クラスの継承関係については以下の組み込みライブラリページにある[「例外クラス」](https://docs.ruby-lang.org/ja/latest/library/_builtin.html)を参考にすると良いでしょう。
 
 ```
