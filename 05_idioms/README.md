@@ -174,14 +174,14 @@ Rubyでは、整数の範囲を表現するRangeというクラスがありま�
 これが最も用いられるのは、配列の部分取得を行うときです。
 
 ```ruby
-%(hoge foo piyo boom)[1..2] # => ['foo', 'piyo']
+%w(hoge foo piyo boom)[1..2] # => ['foo', 'piyo']
 ```
 
 `Array#[]` にRangeを渡すとき、末尾に負数nが入る場合、それは末尾からn番目として扱われます。
 
 ```ruby
-%(hoge foo piyo boom)[1..-1] # => ['foo', 'piyo', 'boom']
-%(hoge foo piyo boom)[1..-2] # => ['foo', 'piyo']
+%w(hoge foo piyo boom)[1..-1] # => ['foo', 'piyo', 'boom']
+%w(hoge foo piyo boom)[1..-2] # => ['foo', 'piyo']
 ```
 
 # begin...rescue
@@ -229,8 +229,6 @@ end
 また、例外クラスを明示しないrescueが捕捉できるのは、StandardErrorのサブクラスのみです。すべての例外クラスの始祖はExceptionクラスですが、自分で例外を定義するときはStandardErrorクラスを継承するようにしましょう。
 
 例外クラスの継承関係については以下の組み込みライブラリページにある[「例外クラス」](https://docs.ruby-lang.org/ja/latest/library/_builtin.html)を参考にすると良いでしょう。
-
-```
 
 ```ruby
 class PpydError < StandardError; end
