@@ -215,6 +215,7 @@ end
 
 # => "なんか死んだよ"
 ```
+rescue節は例外クラスを`rescue RuntimeError, ArgumentError => e`のように複数指定することもできます。
 
 メソッド定義などの末尾に、beginなしのrescueを宣言することもできます。
 
