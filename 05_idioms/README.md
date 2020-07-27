@@ -227,6 +227,9 @@ end
 ```
 
 また、rescueが捕捉できるのは、StandardErrorのサブクラスのみです。すべての例外クラスの始祖はExceptionクラスですが、自分で例外を定義するときはStandardErrorクラスを継承するようにしましょう。
+```suggestion
+例外クラスの継承関係については以下の組み込みライブラリページにある「例外クラス」を参考にすると良いでしょう。
+https://docs.ruby-lang.org/ja/latest/library/_builtin.html
 
 ```ruby
 class PpydError < StandardError; end
