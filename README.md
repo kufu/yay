@@ -118,6 +118,17 @@ rbenv versionsを使うと現在のRubyのインストール・使用状況を�
 ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-darwin19]
 ```
 
+#### [Tips]「現場で使える Ruby on Rails 5速習実践ガイド」向け
+
+Ruby 2.5.1を利用しているので、2.5.1を準備します。
+また、Ruby 2.5系ではBundlerが用意されていないため、Bundlerのインストールも行います。
+
+```sh
+% rbenv install 2.5.1
+% rbenv shell 2.5.1
+% gem install bundler -v "~> 1.0" --no-doc # bundler 1系をインストールする
+```
+
 ## Railsのインストール方法
 
 Railsを利用するためには、Railsだけでなくnodeなども必要になるためそれらのインストールも必要です。
@@ -177,4 +188,15 @@ Successfully installed rails-6.0.3.2
 40 gems installed
 %  rails -v
 Rails 6.0.3.2
+```
+
+#### [Tips]「現場で使える Ruby on Rails 5速習実践ガイド」向け
+
+現場Railsで利用するRailsのバージョンに合わせてるため、以下のようにバージョンを指定してRailsをインストールします（`_version_`とすることで、任意のバージョンを切り替えることができます）。
+
+```sh
+% gem i rails -v 5.2.4 --no-doc
+% rails _5.2.4_ -v
+Rails 5.2.4
+# rails newするときも `rails _5.2.4_ new sample` などとします
 ```
