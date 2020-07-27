@@ -13,7 +13,7 @@ Yay!
 
 - Ruby 2.7 以上（2.6などでも動くはずですが、特別な理由がない限り最新のバージョンを利用しましょう）
   - Bubdlerは2系のものを準備してください（Ruby 2.7であれば標準でBundler 2系がインストールされています）
-- Rails 6.0 以上（予定）
+- Rails 6.0 以上
 
 ## テストの実行方法について
 
@@ -116,4 +116,65 @@ rbenv versionsを使うと現在のRubyのインストール・使用状況を�
 ```sh
 % ruby -v
 ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-darwin19]
+```
+
+## Railsのインストール方法
+
+Railsを利用するためには、Railsだけでなくnodeなども必要になるためそれらのインストールも必要です。
+
+### node/yarnのインストール
+
+インストールしていない人向けです。
+
+https://github.com/nodenv/nodenv#homebrew-on-macos
+
+```sh
+% brew install nodenv
+```
+
+nodenvがインストールできたら~/.zshrcなどに設定を追記します。
+
+```
+eval "$(nodenv init -)"
+export PATH=$HOME/.nodenv/bin:$PATH
+```
+
+その後、ターミナルの再起動などを行い、以下のコマンドでnodeをインストールします。nodeに関してはバージョンの指定はありません。ここではRailsが利用する最低バージョンである10系を指定しますが、12系などでも差し支えはありません。
+
+```sh
+% nodenv install 10.21.0
+% nodenv global 10.21.0
+% node -v
+v10.21.0
+```
+
+続いてyarnのインストールを行います。こちらもバージョンに関して厳密は指定はないので、普通にyarnが動く状態になっていれば良いです。
+
+https://classic.yarnpkg.com/ja/docs/install#mac-stable
+
+```
+% brew install yarn --ignore-dependencies
+```
+
+### ImageMagickのインストール
+
+ActiveStorageなどを利用する場合に必要です。
+必要になるときにインストールするでも構いません。
+
+```sh
+% brew install imagemagick
+```
+
+### Railsのインストール
+
+次のコマンドでrailsをインストールしておきます。
+
+```sh
+% gem i rails --no-doc
+Fetching concurrent-ruby-1.1.6.gem
+    :
+Successfully installed rails-6.0.3.2
+40 gems installed
+%  rails -v
+Rails 6.0.3.2
 ```
