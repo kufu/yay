@@ -195,6 +195,7 @@ Rails 6.0.3.2
 現場Railsで利用するRailsのバージョンに合わせてるため、以下のようにバージョンを指定してRailsをインストールします（`_version_`とすることで、任意のバージョンを切り替えることができます）。
 
 ```sh
+% rbenv shell 2.5.1
 % gem i rails -v 5.2.1 --no-doc
 % rails _5.2.1_ -v
 Rails 5.2.1
