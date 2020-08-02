@@ -44,7 +44,7 @@ Tasks: TOP => default => test
 特定のディレクトリのみテストを実行したい場合はTEST環境変数を利用します。
 
 ```sh
-% bundle exec rake TEST=test/03_private_symbol/*.rb  
+% bundle exec rake TEST=test/03_private_symbol/*.rb
 ```
 
 ## Rubyのインストール方法
@@ -195,8 +195,9 @@ Rails 6.0.3.2
 現場Railsで利用するRailsのバージョンに合わせてるため、以下のようにバージョンを指定してRailsをインストールします（`_version_`とすることで、任意のバージョンを切り替えることができます）。
 
 ```sh
-% gem i rails -v 5.2.4 --no-doc
-% rails _5.2.4_ -v
-Rails 5.2.4
-# rails newするときも `rails _5.2.4_ new sample` などとします
+% rbenv shell 2.5.1
+% gem i rails -v 5.2.1 --no-doc
+% rails _5.2.1_ -v
+Rails 5.2.1
+# rails newするときも `rails _5.2.1_ new sample` などとします
 ```
