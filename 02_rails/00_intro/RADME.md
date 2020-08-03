@@ -62,7 +62,7 @@ sample_development=# \l sample*
  sample_development | root  | UTF8     | en_US.utf8 | en_US.utf8 |
  sample_test        | root  | UTF8     | en_US.utf8 | en_US.utf8 |
 (2 rows)
-sample_development=# quit
+sample_development=# \q
 ```
 
 正しくDBにアクセスし、作成したデータベースの一覧を参照できれば事前準備は完了です。
