@@ -118,17 +118,6 @@ rbenv versionsを使うと現在のRubyのインストール・使用状況を�
 ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-darwin19]
 ```
 
-#### [Tips]「現場で使える Ruby on Rails 5速習実践ガイド」向け
-
-Ruby 2.5.1を利用しているので、2.5.1を準備します。
-また、Ruby 2.5系ではBundlerが用意されていないため、Bundlerのインストールも行います。
-
-```sh
-% rbenv install 2.5.1
-% rbenv shell 2.5.1
-% gem install bundler -v "~> 1.0" --no-doc # bundler 1系をインストールする
-```
-
 ## Railsのインストール方法
 
 Railsを利用するためには、Railsだけでなくnodeなども必要になるためそれらのインストールも必要です。
@@ -190,7 +179,22 @@ Successfully installed rails-6.0.3.2
 Rails 6.0.3.2
 ```
 
-#### [Tips]「現場で使える Ruby on Rails 5速習実践ガイド」向け
+## 「現場で使える Ruby on Rails 5速習実践ガイド」向け環境構築
+
+微妙にバージョンが低いため、別途準備します
+
+### Rubyのインストール
+
+Ruby 2.5.1を利用しているので、2.5.1を準備します。
+また、Ruby 2.5系ではBundlerが用意されていないため、Bundlerのインストールも行います。
+
+```sh
+% rbenv install 2.5.1
+% rbenv shell 2.5.1
+% gem install bundler -v "~> 1.0" --no-doc # bundler 1系をインストールする
+```
+
+### Railsのインストール
 
 現場Railsで利用するRailsのバージョンに合わせてるため、以下のようにバージョンを指定してRailsをインストールします（`_version_`とすることで、任意のバージョンを切り替えることができます）。
 
@@ -201,3 +205,24 @@ Rails 6.0.3.2
 Rails 5.2.1
 # rails newするときも `rails _5.2.1_ new sample` などとします
 ```
+
+### データベースの準備
+
+PostgreSQLが必要なのでインストールしておきます（起動などはしなくてOK）。PostgreSQL自体は次項のDockerを用いますが、gemライブラリのインストールで必要になるため、PostgreSQL自体をインストールだけ実施しておく必要があります。
+
+```
+% brew install postgresql
+% postgres -V
+postgres (PostgreSQL) 12.2
+```
+
+### Dockerの準備
+
+以下を参考にDockerをインストールしてください
+https://hub.docker.com/editions/community/docker-ce-desktop-mac/
+
+最終的に以下のコマンドが利用可能になればOKです
+
+- docker
+- docker-compose
+
