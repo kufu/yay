@@ -2,7 +2,7 @@ postgresql:
   image: postgres:12
   container_name: postgresql_yay
   ports:
-    - 15432:5432
+    - 54320:5432
   volumes:
     - ./db/postgresql:/var/lib/postgresql/data
   environment:
