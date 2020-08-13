@@ -37,10 +37,56 @@ $ rails _5.2.1_ new taskleaf -d postgresql
 ### 開発環境のDBを準備する
 
 書籍内ではMacにインストールしたPostgreSQLを利用していますが、今回はそちらでなく、Dockerコンテナ上のPostgreSQLを利用します。
-
 そのため、`$ bin/rails db:create` を実行する前に DB の準備をしていきます。
 
-TODO: PostgreSQLはDockerイメージを利用する。またポートもデフォルトの5432から変更する。そのため `docker-compose.yml` を配置するのと `config/database.yml` の設定を一部変える必要がある
+このドキュメントと同じ階層にある `docker-compose.yml` を作成したアプリケーション（この場合はtaskleafディレクトリの中）にコピーしてください。
+コピーしたら `docker-compose up` を実行してDocker上にDBを立ち上げます。
+
+```sh
+$ docker-compose up
+```
+
+Docker上のDBに接続するため、RailsアプリケーションのDB接続情報を変更します。 config/database.ymlを編集し、default内にhostやport情報を追記します。
+
+```yaml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost # <-- 追加
+  port: 54321     # <-- 追加
+  username: root  # <-- 追加
+  password: root  # <-- 追加
+  :
+  :
+```
+
+続いて、動作確認もかねてDB上にデータベースを作成します。
+
+```sh
+$ ./bin/rails db:create
+```
+
+その後、次のコマンドでPostgreSQLのターミナルへ接続できれば成功です。
+
+```sh
+$ ./bin/rails db
+Password for user root: # <--- パスワード（今回はroot）を入力する
+psql (12.3, server 10.13 (Debian 10.13-1.pgdg90+1))
+Type "help" for help.
+
+taskleaf_development=# \l taskleaf*
+                                   List of databases
+         Name         | Owner | Encoding |  Collate   |   Ctype    | Access privileges
+----------------------+-------+----------+------------+------------+-------------------
+ taskleaf_development | root  | UTF8     | en_US.utf8 | en_US.utf8 |
+ taskleaf_test        | root  | UTF8     | en_US.utf8 | en_US.utf8 |
+(2 rows)
+
+taskleaf_development-# \q
+```
 
 ### Bootstrap
 
