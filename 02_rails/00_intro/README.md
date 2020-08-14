@@ -378,6 +378,81 @@ URLヘルパーを利用する場合、多くはActiveRecordオブジェクト�
 
 ビューテンプレート向けのヘルパーメソッドはたくさんありますが、URLヘルパーはRailsのルーティングと噛み合わせるための重要なヘルパーなので、忘れないようにしておきましょう。
 
+### フォームとルーティング
+
+ここまでコントローラーからビューへの流れを解説していきましたが、逆にビューからコントローラーへの流れについてもう少し詳しく解説します。
+単にaタグでのリンクの場合は指定したパスへGETアクセスするだけですが、データを更新する場合は少し込み入っています。
+
+今回はupdateの例を見てみましょう。updateアクションへ到達するためにはeditアクションで編集画面を表示し、編集画面からformを使ってupdateアクションへアクセスしています。
+
+まずはeditのテンプレートを見てみましょう。
+
+```ruby
+# app/views/blogs/edit.html.erb
+<h1>Editing Blog</h1>
+
+<%= render 'form', blog: @blog %>
+
+<%= link_to 'Show', @blog %> |
+<%= link_to 'Back', blogs_path %>
+```
+
+edit.html.erbの中にformタグは見当たりませんね。formタグは共通の部品として切り出しているため、別ファイルを呼び出す形になっています。このような部品単位のテンプレートを部分テンプレートやパーシャルと呼びます。
+
+実際のコードとしては`<%= render 'form', blog: @blog %>`がパーシャルで呼び出している部分です。この場合、`form`というパーシャルを指定していますが、ファイル名の探索としては`_form`を探索します。パーシャルとして利用するテンプレートファイルはファイル名の先頭に`_`を付与させることを覚えておきましょう。
+
+それではformタグの実態を見てみましょう。
+
+```ruby
+<%= form_with(model: blog, local: true) do |form| %>
+  <% if blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+        <% blog.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+```
+
+Railsではform_withというヘルパーを使ってformタグを生成させます。form_withを使うことでmodelオブジェクトの状態からリクエスト先などを生成しています。
+
+さて、ここでルーティング情報を改めてみましょう。`blogs#update`の行に注目してください。
+
+```sh
+./bin/rails routes
+   Prefix Verb   URI Pattern               Controller#Action
+    blogs GET    /blogs(.:format)          blogs#index
+          POST   /blogs(.:format)          blogs#create
+ new_blog GET    /blogs/new(.:format)      blogs#new
+edit_blog GET    /blogs/:id/edit(.:format) blogs#edit
+     blog GET    /blogs/:id(.:format)      blogs#show
+          PATCH  /blogs/:id(.:format)      blogs#update
+          PUT    /blogs/:id(.:format)      blogs#update
+          DELETE /blogs/:id(.:format)      blogs#destroy
+```
+
+blogs#updateはPATCHやPUTメソッドでリクエストを送ると定義されています。
+しかし、世の中のブラウザの実装としてPATCHメソッドなどを正しく実装されているとは限りません。そのため、RailsではformタグとしてはPOSTで送信しつつ、hiddenパラメーターでPATCHやPUTを使っているということを明示しています。
+
+![編集画面で生成されたformタグ](./images/form.png)
+
+このような工夫をしてREST的なHTTPの動きと現実の齟齬を吸収しています。
+通常アプリケーションを開発しているときはform_withヘルパーを使うことでこういった点については気にせず実装できます。
+
 ### モデル
 
 コントローラーで何となく使っていたBlogモデルについて、ソースコードを見てみましょう。
