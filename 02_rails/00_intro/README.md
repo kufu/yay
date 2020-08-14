@@ -328,6 +328,25 @@ json.array! @blogs, partial: "blogs/blog", as: :blog
 いずれも`@blogs`を参照していることがわかります。これは、コントローラー内で取得したインスタンス変数をテンプレート内から参照しているということです。
 言い換えればテンプレートとコントローラーはインスタンス変数を共有している、とも言えます。そのため、コントローラー内で不必要にインスタンス変数を扱ってしまうとコントローラーで参照しているかもしれないという懸念が生まれ、メンテナンス性に影響を与えます。
 
+ここまではindexアクションを元にした暗黙的なテンプレートの選択について流れをみてきました。
+しかし、実際のアプリケーションではHTMLとJSONで同じデータ形式を返すだけでは終わらない場合もあります。
+そういったformat単位でコントローラー内の処理を変えたい場合はrespond_toを使います。
+たとえば、updateアクションなどはformatによってレスポンスを変更しています。また、respond_toとセットである必要はありませんが、renderメソッドを使うことで任意のテンプレートを指定するようなことが可能です。
+
+```ruby
+def update
+  respond_to do |format|
+    if @blog.update(blog_params)
+      format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+      format.json { render :show, status: :ok, location: @blog }
+    else
+      format.html { render :edit }
+      format.json { render json: @blog.errors, status: :unprocessable_entity }
+    end
+  end
+end
+```
+
 ### ビューとURL
 
 HTMLを描画する際、リンクやformなど、別URLへ遷移することはよくあります。Railsではアプリケーション内の別Pathへアクセスしやすくするためのヘルパーを用意しています。
