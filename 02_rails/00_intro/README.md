@@ -391,6 +391,16 @@ edit_blog GET    /blogs/:id/edit(.:format) blogs#edit
 
 URLヘルパーを利用する場合、多くはActiveRecordオブジェクトなどを直接引数に渡すことでパスを構築しますが、`edit_blog_path(id: 1)`のようにルーティングに必要なパラメーターを直接渡すことも可能です。
 
+また、`_path`ではなく`_url`を末尾に追加するヘルパーもあります。`_url`の場合はパス情報だけではなく、httpから始まる完全なURLを返します。
+
+```ruby
+# rails cでは`app`経由でpathやurlヘルパーを使うことができます
+irb(main):004:0> app.edit_blog_path(blog)
+=> "/blogs/1/edit"
+irb(main):005:0> app.edit_blog_url(blog)
+=> "http://www.example.com/blogs/1/edit"
+```
+
 ビューテンプレート向けのヘルパーメソッドはたくさんありますが、URLヘルパーはRailsのルーティングと噛み合わせるための重要なヘルパーなので、忘れないようにしておきましょう。
 
 ### フォームとルーティング
