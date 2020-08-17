@@ -314,7 +314,7 @@ class BlogsController < ApplicationController
 end
 ```
 
-indexメソッドでは、Blogというモデルクラスを通じてblogsテーブルのレコードを全件取得しています。
+indexメソッドでは、Blogというモデルクラスを通じてblogsテーブルのレコードを全件取得しています。
 このデータをビューテンプレートで出力し、HTMLなどをブラウザに返しています。
 
 続いて、URLとコントローラーを紐付けているルーティングの定義を確認してみます。`config/routes.rb`の内容を見てみましょう。
