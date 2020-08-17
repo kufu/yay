@@ -387,6 +387,7 @@ json.array! @blogs, partial: "blogs/blog", as: :blog
   - 事例と思われるもの：userごとのハッシュ化したパスワードとsaltが漏れてしまった例
     - https://jiraffe.co.jp/news/2019/01/31/1321/
     - https://jiraffe.co.jp/news/2019/02/22/1352/
+  - 対策の参考文献：http://joker1007.hatenablog.com/entry/2020/08/17/141621
 
 `partial: "blogs/blog"` でblogオブジェクトの要素をフィルタリングしている例
 
