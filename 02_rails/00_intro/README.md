@@ -334,6 +334,15 @@ json.array! @blogs, partial: "blogs/blog", as: :blog
     - https://jiraffe.co.jp/news/2019/01/31/1321/
     - https://jiraffe.co.jp/news/2019/02/22/1352/
 
+`partial: "blogs/blog"` でblogオブジェクトの要素をフィルタリングしている例
+
+```ruby
+# app/views/blogs/_blog.json.jbuilder
+json.extract! blog, :id, :title, :created_at, :updated_at
+json.url blog_url(blog, format: :json)
+```
+
+
 ここまではindexアクションを元にした暗黙的なテンプレートの選択について流れをみてきました。
 しかし、実際のアプリケーションではHTMLとJSONで同じデータ形式を返すだけでは終わらない場合もあります。
 そういったformat単位でコントローラー内の処理を変えたい場合はrespond_toを使います。
