@@ -275,7 +275,7 @@ end
 
 `resources`という書き方は数ある定義方法の1つです。より詳しくは[Railsガイドのルーティングの章](https://railsguides.jp/routing.html)を参照してください。
 
-ところで、ここまで読んだ方はRailsらしいルーティングって何？と思うかもしれません。そのためのヒントをいくつか例示します。
+ところで、ここまで読んだ方はRailsらしいルーティングって何？　と思うかもしれません。そのためのヒントをいくつか例示します。
 
 - RailsはRESTの考え方に基づくURL構造を基本としている
 - [DHHはどのようにRailsのコントローラを書くのか](https://postd.cc/how-dhh-organizes-his-rails-controllers/)
@@ -777,4 +777,3 @@ scopeはメソッドチェーンでうまく物事を解決できるようにAct
 また、scoepの一種としてdefault_scopeという機能もあります。default_scopeはscopeを明示せずとも自動的に付与されるscopeのことです。たとえば論理削除したデータをdefault_scopeで非表示にするような考え方は、一見、良い方法に思えます。しかし、別の軸から検索する場合は常にunscopedでscopeを外す処理を追加しないといけなかったり、意図せずdefault_scopeの条件が付与されてしまい時間を溶かしてしまう、というようなケースもあるため、使う場合は慎重に扱いましょう。
 
 より詳しい解説はRailsガイドの[スコープに関する解説](https://railsguides.jp/active_record_querying.html#%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97)を参考にしてください。
-
