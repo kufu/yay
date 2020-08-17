@@ -219,6 +219,60 @@ edit_blog GET    /blogs/:id/edit(.:format) blogs#edit
 
 scaffoldで生成されたかっこいいブログがどのように動いているか、実際のコードをを見てみましょう。
 
+### 大まかなディレクトリ構成
+
+コードを解説を始める前に簡単なディレクトリ構成について解説します。
+もっとも重要なディレクトリは`app`です。appディレクトリ内にはRailsの基本構成、MVCに対応するmodels、viewes、controllersがあります。
+
+```sh
+% ls -1FA app
+assets/
+controllers/
+helpers/
+javascript/
+jobs/
+models/
+views/
+```
+
+そして、コントローラーとビューは命名規則によって暗黙的に関連付けされます。
+
+```sh
+ % ls -1FA app/controllers
+application_controller.rb
+blogs_controller.rb
+concerns/
+```
+
+たとえば、blogs_controller.rbの場合。ビューでは`views/blogs`ディレクトリ内のテンプレートを参照するという形です。
+
+```sh
+% ls -1FA app/views/blogs
+_blog.json.jbuilder
+_entry.html.erb
+_form.html.erb
+edit.html.erb
+index.html.erb
+index.json.jbuilder
+new.html.erb
+show.html.erb
+show.json.jbuilder
+```
+
+モデルの場合はファイル名によって他のレイヤーと連動はしませんが、モデル名（単数形）とDB上のテーブル名（複数形）という関連があります。
+
+```sh
+% ls -1FA app/models
+application_record.rb
+blog.rb
+concerns/
+entry.rb
+```
+
+他には、設定ファイルに関する内容を保存する`config`やDBに関する定義ファイルなどを保存する`db`ディレクトリなどがあります。
+
+詳しくは都度解説していくので、まずはこんな感じの構成があるということを頭に入れておいてください。
+
 ### ルーティングとコントローラー
 
 再掲となりますが、改めてルーティング情報を確認してみましょう。
