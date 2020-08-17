@@ -566,6 +566,7 @@ Railsではモデル同士の関連付けを実現させるため、`has_many`�
 ```ruby
 # app/models/blog.rb
 class Blog < ApplicationRecord
+  # dependent: :destroyをつけると、blog削除時に関連するレコード(entry)も一緒に削除します
   has_many :entries, dependent: :destroy
 end
 ```
@@ -587,6 +588,7 @@ end
 5.times do |n|
   b = Blog.create(title: "blog #{n}")
   Random.rand(1..4).times do |_n|
+  # blogの関連として作成したEntryを追加する
     b.entries << Entry.create(name: "entry #{_n}", body: "あ" * _n)
   end
 end
