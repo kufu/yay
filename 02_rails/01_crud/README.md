@@ -27,11 +27,34 @@ Chapter3ではCRUD機能を備えたアプリケーションをscaffoldを使わ
 
 今回は Ruby 2.5.1, Rails 5.2.1 を使っていくため、以下のようにバージョンを指定した上で `rails new` コマンドを実行してください。
 
+また、Ruby 2.5.1, Rails 5.2.1 をインストールしていない場合は事前にインストールをお願いします。
+
 ※ 書籍とは異なる点なのでご注意ください
 
 ```sh
 $ rbenv shell 2.5.1
-$ rails _5.2.1_ new taskleaf -d postgresql
+$ rails _5.2.1_ new taskleaf -d postgresql --skip-bundle
+```
+
+rails のバージョンを固定するため、生成された `taskleaf/Gemfile` の記述を修正します。
+
+before
+
+```
+gem 'rails', '~> 5.2.1'
+```
+
+after
+
+```
+gem 'rails', '5.2.1'
+```
+
+修正後、 `bundle install` を実行します。
+
+```sh
+$ cd taskleaf
+$ bundle install
 ```
 
 ### 開発環境のDBを準備する
