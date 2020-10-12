@@ -6,7 +6,7 @@
 
 ## フロントエンドについて
 
-Rails 5.2まではSprocetsを使ってJSのビルド・コンパイルを行っていましたが、Rails 6.0からJSはWebpackerを、CSSは引き続きSprocketsを使う体勢になっています。
+Rails 5.2まではSprocetsを使ってJSのビルド・コンパイルを行っていましたが、Rails 6.0からJSはWebpackerを、CSSは引き続きSprocketsを使う体制になっています。
 
 Webpackerはwebpackの薄いラッパーですが、Webpackerを使うといままでのSprocekts時代と同じ要領でビルドや配信、CSRF対策などができるのでWebpackerをそのまま使うかwebpackに切り替えるかはフロントエンドの習熟度や重要度に応じて検討すると良いでしょう。
 
