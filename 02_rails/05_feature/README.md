@@ -24,7 +24,7 @@ def create
     # && return では意図したとおりに動かないので注意
   end
 
-  if @user.save!
+  if @user.save
     redirect_to @user
   else
     render :new
