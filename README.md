@@ -196,3 +196,8 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac/
 - docker
 - docker-compose
 
+
+# LICENSE
+
+このリポジトリは、[MITライセンス](https://opensource.org/licenses/MIT)で公開されています。
+Yay! is published under the [MIT-License](https://opensource.org/licenses/MIT).
