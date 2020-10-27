@@ -5,7 +5,7 @@ SmartHRでは、現在多くのプロダクトのバックエンドがRailsに�
 しかし、Railsを深く理解するのはとても難しいです。なぜなら、Railsを理解するためにはまずRubyを理解する必要があるからです。
 どの言語、どのWAFでも同じですが、そのWAFを使いこなすためには言語の特性を知り、WAFの動きを頭の中で納得することが重要です。
 
-前半パートでは、まずRailsを理解するためのRuby講座があります。そして後半パートでは、Railsを理解していきます。
+前半パートでは、まずRailsを理解するためのRuby講座があります。そして後半パートでは、[現場Rails](https://book.mynavi.jp/ec/products/detail/id=93905)を題材にしてRailsを理解していきます。
 このテキストを終える頃には、あなたはSmartHRのRails戦士です！
 Yay!
 
@@ -148,6 +148,8 @@ Rails 6.0.3.2
 ```
 
 ## 「現場で使える Ruby on Rails 5速習実践ガイド」向け環境構築
+
+書籍URL : https://book.mynavi.jp/ec/products/detail/id=93905
 
 微妙にバージョンが低いため、別途準備します
 
