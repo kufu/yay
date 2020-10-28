@@ -196,3 +196,7 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac/
 - docker
 - docker-compose
 
+# LICENSE
+
+このリポジトリは、[WTF公衆ライセンス](http://www.wtfpl.net/)で公開されています。
+Yay! is published under the [WTFPL](http://www.wtfpl.net/).
