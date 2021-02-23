@@ -97,7 +97,7 @@ ActiveRecord::Base.transaction do
   u = User.find_by(name: 'ppyd')
   if u.account.total >= 10000
     u.account.total -= 10000
-    u.inventories.create!(name: 'something', price: 1000)
+    u.inventories.create!(name: 'something', price: 10000)
   end
 end
 ```
@@ -116,7 +116,7 @@ end
 [1, 2, 3].map { |n| n * 3 }
 
 # メソッドチェインするとき
-[1, 2, 3, 4, 5, 6, 7].select { |n
+[1, 2, 3, 4, 5, 6, 7].select { |n|
   mod = n % 3
   mod == 2
 }.map { |n| n * 3 }
