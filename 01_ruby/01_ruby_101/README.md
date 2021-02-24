@@ -149,8 +149,8 @@ Rubyでは、レシーバを省略したメソッド呼び出しが可能です�
 class Hoge
 
   # コンテキストはclassオブジェクト、つまりHogeのクラスオブジェクトをレシーバとしたメソッド呼び出し
-  # Hoge.attr_accessor(:piyo) と等しい。ただし、attr_accessorは通常プライベートメソッドなので、Hoge.attr_accesorと書くことはできない
-  attr_accessor :piyo 
+  # Hoge.attr_accessor(:piyo) と等しい。ただし、attr_accessorは通常プライベートメソッドなので、Hoge.attr_accessorと書くことはできない
+  attr_accessor :piyo
 
 
   # これは組み込みの式であり、メソッド呼び出しではない
