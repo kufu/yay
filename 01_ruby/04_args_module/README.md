@@ -282,8 +282,8 @@ end
 多くの場合は、ディレクトリ構成とモジュール構成は一致します。例えば、うえの名前空間の場合は、次のようにディレクトリを作成します。
 
 ```shell
-└── kinoppyd_sugoi_berni
-    ├── sugoi_sgring
+└── kinoppyd_sugoi_benri
+    ├── sugoi_string
     │   └── ext.rb
     ├── sugoi_string.rb
     └── version.rb
