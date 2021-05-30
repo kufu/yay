@@ -177,7 +177,7 @@ https://railsguides.jp/action_controller_overview.html#rescue
 
 ActiveRecordでは、アプリケーションで取り扱うバリデーションを記述する仕組みがあります。
 
-たとえば、Blogのタイトルは空欄を許さず、かつユニークである用件があるとしましょう。その場合、次のようにvalidatesメソッドを使って定義できます。
+たとえば、Blogのタイトルは空欄を許さず、かつユニークである要件があるとしましょう。その場合、次のようにvalidatesメソッドを使って定義できます。
 
 https://github.com/sugamasao/basic_rails_sample_code/commit/7187baf4f48c4cb5137176a273170cdc9f3dcd62
 
