@@ -15,4 +15,19 @@
 # 2つ目の引数を加える前に、必ずこの `unknown_number` の戻り値を、1つ目の引数の各数値に加えてから計算してください
 # また、 `unknown_number` メソッドは、一度しか呼び出すことはできません
 class LearnBlock
+  def ext_sum(a, b, &blk)
+    sum = a + b
+    if not blk then
+      sum
+    else
+      blk.call(sum)
+    end
+  end
+
+  def search_unknown(arr, addition)
+    ret_unknown_number = unknown_number()
+    arr.filter do |e|
+      (e + ret_unknown_number + addition) % 5 == 0
+    end
+  end
 end
