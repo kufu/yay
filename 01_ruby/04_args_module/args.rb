@@ -26,3 +26,31 @@
 #         Configure 'sugoi' as 'oniyabai'
 #         Configure 'foo' as 'iihanashi'
 #         Configure 'hoge' as 'uhyo-'
+
+class Args
+  def calc(str, str_repeat_num, replicate_num = str_repeat_num)
+    repeated_str = str.to_s * str_repeat_num
+    3.times.map{|_| repeated_str}
+  end
+
+  def count_object(array: [], keyword:)
+    array.count(keyword)
+  end
+
+  def configure(benri:, sugoi:, **options)
+    puts configuration_repr("benri", benri)
+    puts configuration_repr("sugoi", sugoi)
+    options.filter{|k, v|
+      k.start_with?("c_")
+    }.map{|k, v|
+      [k.slice(2..-1), v]
+    }.sort.each{|k, v|
+      puts configuration_repr(k, v)
+    }
+  end
+
+  private
+  def configuration_repr(key, val)
+    "Configure '%s' as '%s'" % [key, val]
+  end
+end
