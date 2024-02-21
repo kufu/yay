@@ -114,6 +114,11 @@ GEM
     e2mmap (0.1.0)
     erubi (1.12.0)
     execjs (2.9.1)
+    factory_bot (6.4.6)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -362,6 +367,7 @@ DEPENDENCIES
   bootstrap (~> 5.3)
   capybara
   debug
+  factory_bot_rails (~> 6.4)
   html2slim (~> 0.2.0)
   importmap-rails
   jbuilder
