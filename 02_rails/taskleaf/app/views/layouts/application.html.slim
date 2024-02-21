@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title
+      | Taskleaf
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+  body
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+      .navbar-brand Taskleaf
+      u1.navbar-nav.m1-auto
+        - if current_user
+          li.nav-item= link_to "タスク一覧", tasks_path, class: "nav-link"
+          li.nav-item= link_to "ユーザー一覧", admin_users_path, class: "nav-link"
+          li.nav-item= link_to "ログアウト", logout_path, data: {turbo_method: :delete}, class: "nav-link"
+        - else
+          li.nav-item= link_to "ユーザー一覧", admin_users_path, class: "nav-link"
+    .container
+    - if flash.notice.present?
+        .alert.alert-success= flash.notice
+    = yield

@@ -1,0 +1,24 @@
+h1 Admin::Users#index
+
+= link_to "新規登録", new_admin_user_path, class: "btn btn-primary"
+
+.mb-3
+table.table.table-hover
+    thead.thead-default
+        tr
+            th= User.human_attribute_name(:name)
+            th= User.human_attribute_name(:email)
+            th= User.human_attribute_name(:admin)
+            th= User.human_attribute_name(:created_at)
+            th= User.human_attribute_name(:updated_at)
+    tbody
+        - @users.each do |user|
+            tr
+                td= link_to user.name, [:admin, user]
+                td= user.email
+                td= user.admin? ? "あり" : "なし"
+                td= user.created_at
+                td= user.updated_at
+                td
+                    = link_to "編集", edit_admin_user_path(user), class: "btn btn-primary mr-3"
+                    = link_to "削除", [:admin, user], data: { turbo_method: :delete, turbo_confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？" }, class: "btn btn-danger"

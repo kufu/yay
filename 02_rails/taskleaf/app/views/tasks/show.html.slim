@@ -1,0 +1,22 @@
+h1 Tasks#show
+
+.nav.justify-content-end
+  = link_to '一覧', tasks_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Task.human_attribute_name(:id)
+      td= @task.id
+    tr
+      th= Task.human_attribute_name(:name)
+      td= @task.name
+    tr
+      th= Task.human_attribute_name(:description)
+      td= simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Task.human_attribute_name(:created_at)
+      td= @task.created_at
+    tr
+      th= Task.human_attribute_name(:updated_at)
+      td= @task.updated_at
+= link_to "編集", edit_task_path, class: "btn btn-primary mr-3"

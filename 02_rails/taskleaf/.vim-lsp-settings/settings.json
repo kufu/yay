@@ -1,0 +1,7 @@
+{
+    "ruby-lsp": {
+        "cmd": [
+            "/Users/teruya.himaki/.asdf/installs/ruby/3.3.0/bin/ruby-lsp"
+        ]
+    }
+}
