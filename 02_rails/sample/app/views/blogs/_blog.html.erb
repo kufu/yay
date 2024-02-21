@@ -1,0 +1,12 @@
+<div id="<%= dom_id blog %>">
+  <p>
+    <strong>Title:</strong>
+    <%= blog.title %>
+    <td>
+      <ul>
+        <%= render partial: "entry", collection: blog.entries, as: :entry %>
+      </ul>
+    </td>
+  </p>
+
+</div>
