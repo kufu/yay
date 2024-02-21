@@ -14,7 +14,8 @@ html
       u1.navbar-nav.m1-auto
         - if current_user
           li.nav-item= link_to "タスク一覧", tasks_path, class: "nav-link"
-          li.nav-item= link_to "ユーザー一覧", admin_users_path, class: "nav-link"
+          - if current_user.admin?
+            li.nav-item= link_to "ユーザー一覧", admin_users_path, class: "nav-link"
           li.nav-item= link_to "ログアウト", logout_path, data: {turbo_method: :delete}, class: "nav-link"
         - else
           li.nav-item= link_to "ユーザー一覧", admin_users_path, class: "nav-link"
