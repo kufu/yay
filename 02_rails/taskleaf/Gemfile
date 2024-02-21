@@ -78,3 +78,5 @@ gem "solargraph", "~> 0.50.0"
 gem "solargraph-rails", "~> 1.1"
 
 gem "rails_autolink", "~> 1.1"
+
+gem "rspec-rails", "~> 6.1"
