@@ -84,3 +84,5 @@ gem "rspec-rails", "~> 6.1"
 gem "factory_bot_rails", "~> 6.4"
 
 gem "ransack", "~> 4.1"
+
+gem "kaminari", "~> 1.2"

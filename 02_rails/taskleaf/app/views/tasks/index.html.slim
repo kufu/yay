@@ -1,6 +1,10 @@
 h1 Tasks#index
 = link_to "新規登録", new_task_path, class: "btn btn-primary"
 
+.mb-3
+    = paginate @tasks
+    = page_entries_info @tasks
+
 = search_form_for @q, class: 'mb-5' do |f|
   .form-group.row
     = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
