@@ -12,6 +12,19 @@ class Task < ApplicationRecord
     ["created_at", "description", "id", "id_value", "name", "updated_at", "user_id"]
   end
 
+  def self.csv_attributes
+    ['name', 'description', 'created_at', 'updated_at']
+  end
+
+  def self.generate_csv
+    CSV.generate(headers: true) do |csv|
+      csv << csv_attributes
+      all.each do |task|
+        csv << csv_attributes.map{|attr| task.send(attr)}
+      end
+    end
+  end
+
   private
 
   def validate_name_not_including_comma
