@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :users
   end
   root to: "tasks#index"
-  resources :tasks
+  resources :tasks do
+    post :confirm, action: :confirm_new, on: :new
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

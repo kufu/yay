@@ -1,0 +1,15 @@
+h1 登録内容の確認
+
+= form_with model: @task, data: { turbo: false } do |f|
+  table.table.table-hover
+    tbody
+      tr
+        th= Task.human_attribute_name(:name)
+        td= @task.name
+        = f.hidden_field :name
+      tr
+        th= Task.human_attribute_name(:description)
+        td= simple_format(@task.description)
+        = f.hidden_field :description
+  = f.submit '戻る', name: 'back', class: 'btn btn-secondary mr-3'
+  = f.submit '登録', class: 'btn btn-primary'
