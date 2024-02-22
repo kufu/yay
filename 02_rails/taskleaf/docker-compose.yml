@@ -14,3 +14,9 @@ services:
     hostname: postgres
     restart: always
     user: root
+  mailcatcher:
+    image: sj26/mailcatcher
+    container_name: mailcatcher_taskleaf
+    ports:
+      - 1025:1025
+      - 1080:1080
