@@ -11,6 +11,11 @@ class TasksController < ApplicationController
     end
   end
 
+  def import
+    current_user.tasks.import(params[:file])
+    redirect_to tasks_url, notice: 'タスクを追加しました'
+  end
+
   def show
   end
 

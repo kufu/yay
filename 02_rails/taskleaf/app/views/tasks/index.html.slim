@@ -26,4 +26,7 @@ table.table.table-hover
         td= task.created_at
         td= link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
         td= link_to "削除", task, data: { turbo_method: :delete, turbo_confirm: "タスク「#{task.name}」を削除しますか？"}, class: "btn btn-danger"
-        
+
+= form_tag import_tasks_path, multipart: true, class: 'mb-3' do
+    = file_field_tag :file
+    = submit_tag 'インポート', class: 'btn btn-primary'
