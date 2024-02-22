@@ -3,15 +3,4 @@ h1 タスクの新規登録
 .nav.justify-content-end
     = link_to "一覧", tasks_path, class: "nav-link"
 
-- if @task.errors.present?
-  u1#error_explanation
-    - @task.errors.full_messages.each do |msg|
-      li= msg
-= form_with model: @task, url: confirm_new_task_path, data: { turbo: false } do |f|
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: "form-control", id: "task_name"
-  .form-group
-    = f.label :description
-    = f.text_area :description, rows: 5, class: "form-control", id: "task_description"
-  = f.submit "確認", class: "btn btin-primary"
+= render partial: 'form', locals: { task: @task }

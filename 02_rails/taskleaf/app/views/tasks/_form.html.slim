@@ -9,4 +9,7 @@
   .form-group
     = f.label :description
     = f.text_area :description, rows: 5, class: "form-control", id: "task_description"
-  = f.submit nil, class: "bitn btin-primary"
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form-control'
+  = f.submit nil, class: 'btn btin-primary'

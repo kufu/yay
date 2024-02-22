@@ -5,6 +5,9 @@ h1 Tasks#show
 table.table.table-hover
   tbody
     tr
+      th= Task.human_attribute_name(:image)
+      td= image_tag @task.image if @task.image.attached?
+    tr
       th= Task.human_attribute_name(:id)
       td= @task.id
     tr
