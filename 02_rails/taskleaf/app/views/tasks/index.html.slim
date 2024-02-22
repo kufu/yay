@@ -1,11 +1,23 @@
 h1 Tasks#index
 = link_to "新規登録", new_task_path, class: "btn btn-primary"
 
+= search_form_for @q, class: 'mb-5' do |f|
+  .form-group.row
+    = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :name_cont, class: 'form-control'
+  .form-group.row
+    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :created_at_gteq, class: 'form-control'
+  .form-group
+    = f.submit class: 'btn btn-outline-primary'
+
 .mb-3
 table.table.table-hover
   thead.thead-default
     tr
-      th= Task.human_attribute_name(:name)
+      th= sort_link(@q, :name)
       th= Task.human_attribute_name(:created_at)
   tbody
     - @tasks.each do |task|
