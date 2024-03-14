@@ -197,7 +197,7 @@ presenceやuniqunessといった指定はRailsが標準で提供しているも�
 
 ### スコープ
 
-ActiveRecordではwhere区などのクエリを部品として扱いやすくするためのscopeという機能を提供しています。
+ActiveRecordではwhere句などのクエリを部品として扱いやすくするためのscopeという機能を提供しています。
 
 https://github.com/sugamasao/basic_rails_sample_code/commit/1deb6f677b92e228b5411e021845a97f39128ad7
 
@@ -245,6 +245,6 @@ irb(main):012:0> Blog.notfound_method
 
 scopeはメソッドチェーンでうまく物事を解決できるようにActiveRecord::Relationを返すように工夫されているため、この動作の違いは把握しておくと良いでしょう。
 
-また、scoepの一種としてdefault_scopeという機能もあります。default_scopeはscopeを明示せずとも自動的に付与されるscopeのことです。たとえば論理削除したデータをdefault_scopeで非表示にするような考え方は、一見、良い方法に思えます。しかし、別の軸から検索する場合は常にunscopedでscopeを外す処理を追加しないといけなかったり、意図せずdefault_scopeの条件が付与されてしまい時間を溶かしてしまう、というようなケースもあるため、使う場合は慎重に扱いましょう。
+また、scopeの一種としてdefault_scopeという機能もあります。default_scopeはscopeを明示せずとも自動的に付与されるscopeのことです。たとえば論理削除したデータをdefault_scopeで非表示にするような考え方は、一見、良い方法に思えます。しかし、別の軸から検索する場合は常にunscopedでscopeを外す処理を追加しないといけなかったり、意図せずdefault_scopeの条件が付与されてしまい時間を溶かしてしまう、というようなケースもあるため、使う場合は慎重に扱いましょう。
 
 より詳しい解説はRailsガイドの[スコープに関する解説](https://railsguides.jp/active_record_querying.html#%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%97)を参考にしてください。
