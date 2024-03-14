@@ -235,7 +235,7 @@ class PpydError < StandardError; end
 class KinoError < Exception; end
 
 raise PpydError # これはrescueで捕捉可能
-raise KinoError # これはrescueで補足できない、普通は処理系が即死する
+raise KinoError # これはrescueで捕捉できない、普通は処理系が即死する
 ```
 
 最後に、例外が発生しようとしまいと、必ず実行して欲しい処理は `ensure` を使います。他の言語では、finallyなどの呼ばれ方をしている仕組みと同じです。

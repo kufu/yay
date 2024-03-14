@@ -1,6 +1,6 @@
 # scaffoldでRailsの開発を体験してみよう
 
-scaffoldとは、rails generateで使用できる、あるテーブルに対してCURD操作を行うWebアプリケーションのソースコード一式を生成するコマンドです。
+scaffoldとは、rails generateで使用できる、あるテーブルに対してCRUD操作を行うWebアプリケーションのソースコード一式を生成するコマンドです。
 Railsの仕組みをざっくり確認したい場合や15分でブログを作りたい場合などに利用します。
 
 - ProTip:`./bin/rails generate`ではmodelのみ、controllerのみといったコンポーネント単位でのジェネレートもできます
