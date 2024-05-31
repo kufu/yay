@@ -4,6 +4,32 @@
 
 ## 補足
 
+### 表示形式を変える
+
+デフォルトでは `...` のような形で実行結果が表示されますが、`--format documentation` ( 省略形: `-f d` ) を指定すると書籍に記載されているような形式で出力できます。
+
+```
+$ bundle exec rspec spec/system/tasks_spec.rb
+.....
+
+Finished in 7.14 seconds (files took 4.85 seconds to load)
+5 examples, 0 failures
+```
+
+```
+$ bundle exec rspec spec/system/tasks_spec.rb -f d
+
+タスク管理機能
+  一覧表示機能
+    ユーザーAがログインしているとき
+      behaves like ユーザーAが作成したタスクが表示される
+        is expected to have text "最初のタスク"
+(省略)
+
+Finished in 4.38 seconds (files took 1.91 seconds to load)
+5 examples, 0 failures
+```
+
 ### 一部のテストケースのみ実行する
 
 spec ファイル全体でなく、一部のテストケースのみ実行したい場合は以下のように指定できます。
