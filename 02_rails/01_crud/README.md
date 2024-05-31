@@ -146,6 +146,32 @@ gem 'bootstrap', '~> 5.3.3'
 gem 'dartsass-sprockets'
 ```
 
+#### JS の読み込み
+
+書籍内では特に使用する予定はありませんが、navbar の開閉やドロップダウンなどを使用したい場合は importmap-rails を使って読み込むことができます。
+
+1. `config/initializers/assets.rb` の `precompile` に追加
+   
+   ```diff
+   - # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+   + Rails.application.config.assets.precompile += %w( bootstrap.min.js popper.js )
+   ```
+2. `config/importmap.rb` の最終行に追加
+
+   ```ruby
+   pin "bootstrap", to: "bootstrap.min.js", preload: true
+   pin "@popperjs/core", to: "popper.js", preload: true
+   ```
+3. `app/javascript/application.js` で Bootstrap と popperjs を読み込み
+
+   ```js
+   import "@popperjs/core"
+   import "bootstrap"
+   ```
+
+> [!TIP]
+> 手順 2 はコマンド `bin/importmap pin bootstrap` で行うこともできますが、CDN からダウンロードされる `@popperjs/core` が他のファイルを読み込みに行こうとして 404 でエラーになってしまうので、gem から読み込む方法をおすすめします。
+
 ## タスクモデルを作成する
 
 > 参考: 現場で使える Ruby on Rails 5速習実践ガイド Chapter 3-2 p.92
