@@ -6,9 +6,11 @@
 
 ## フロントエンドについて
 
-Rails 5.2まではSprocetsを使ってJSのビルド・コンパイルを行っていましたが、Rails 6.0からJSはWebpackerを、CSSは引き続きSprocketsを使う体制になっています。
+JS や CSS の管理は Rails のバージョンによってメジャーなものが異なります。
 
-Webpackerはwebpackの薄いラッパーですが、Webpackerを使うといままでのSprocekts時代と同じ要領でビルドや配信、CSRF対策などができるのでWebpackerをそのまま使うかwebpackに切り替えるかはフロントエンドの習熟度や重要度に応じて検討すると良いでしょう。
+Rails 6 までは JS は Webpacker、CSS は sprockets を使う形式がメジャーでしたが、Webpacker は[すでに開発が終了](https://github.com/rails/webpacker#webpacker-has-been-retired-)しており、Rails 7 からは JS は importmap-rails、CSS は引き続き sprockets を使う形式がメジャーとなっています。
+
+このあたりは [アセットパイプライン - Rails ガイド](https://railsguides.jp/v7.1/asset_pipeline.html) なども含めて参照するとよいかと思います。
 
 ## `rails c` 便利Tips
 

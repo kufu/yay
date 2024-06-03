@@ -2,6 +2,34 @@
 
 「Chapter 4 現実の複雑さに対応する」の補足事項です
 
+## フォームのエラーが表示されない場合
+
+Rails 7 以降では Chapter 3 の補足でも触れた Turbo という機能がデフォルトで有効になっており、フォームの送信などが自動的に非同期で行われます。  
+この機能の副作用として、以下のようなコードにおいてブラウザのコンソールに `Form responses must redirect to another location` というエラーが表示され、フォームのエラー表示がうまく更新されない場合があります。
+
+```ruby
+def create
+  @task = current_user.tasks.new(task_params)
+  if @task.save
+    redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。"
+  else
+    render :new
+  end
+end
+```
+
+これは Turbo の機能の一つ Turbo Drive が以下のような仕様であるためです([参考](https://github.com/domchristie/turbo/blob/c458b47c9f4c4bf48ae26f50a3d1bc88ad448039/src/core/drive/form_submission.js#L131-L142))。
+- フォーム自体はリダイレクトされることを期待している
+- 400番台 または 500番台 のエラーが返却された場合は画面を更新する
+  - tips: `render` はデフォルトでステータスコード 200 を返却する
+- それ以外の場合はエラー
+
+したがって、以下のように `status` を指定することでエラー表示が正しく更新されるようになります。
+
+```diff
+- render :new
++ render :new, status: :unprocessable_entity
+```
 
 ## 補足
 
